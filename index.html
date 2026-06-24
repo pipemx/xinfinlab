@@ -53,6 +53,7 @@
   --input-bg: rgba(0,0,0,.04);
   --input-border: rgba(0,0,60,.1);
 }
+[data-theme="light"] .float-lead{background:rgba(255,255,255,.93);border-color:rgba(0,145,234,.22);box-shadow:0 8px 28px rgba(0,0,80,.1);color:#0a0a2e;}[data-theme="light"] .float-lead i{color:var(--cyan);}[data-theme="light"] .float-lead small{color:#4a5a8a;}
 
 *{margin:0;padding:0;box-sizing:border-box;}
 html{scroll-behavior:smooth;}
@@ -126,7 +127,7 @@ nav{position:fixed;top:0;left:0;right:0;z-index:1000;background:var(--nav-bg);ba
 @keyframes fadeUp{from{opacity:0;transform:translateY(30px);}to{opacity:1;transform:translateY(0);}}
 
 /* ─── STATS ─── */
-.stats-wrap{max-width:1100px;margin:-70px auto 0;padding:0 20px;position:relative;z-index:10;}
+.stats-wrap{max-width:1100px;margin:-24px auto 0;padding:0 20px;position:relative;z-index:10;}
 .stats-grid{display:grid;grid-template-columns:repeat(4,1fr);background:var(--card);border:1px solid var(--card-border);backdrop-filter:blur(24px);border-radius:24px;overflow:hidden;}
 .stat-item{text-align:center;padding:28px 20px;border-right:1px solid var(--card-border);position:relative;}
 .stat-item:last-child{border-right:none;}
@@ -695,7 +696,7 @@ section[style*="var(--bg2)"] .aurora-orb{opacity:.22;}
   .hero-vid-wrap{width:94%;aspect-ratio:16/10;}
 }
 /* ─── HERO SCROLL PIN ─── */
-#hero-pin{position:sticky;top:0;height:100vh;height:100dvh;overflow:hidden;display:flex;align-items:center;justify-content:center;padding-top:76px;background:var(--bg);}#hero-pin .aurora{position:absolute;inset:0;pointer-events:none;}#hero-pin canvas{position:absolute;inset:0;z-index:1;width:100%;height:100%;}#hero-pin .deco-grid{position:absolute;inset:0;z-index:0;}.hero-vid-wrap video{display:block;}#hero-progress{position:absolute;bottom:0;left:0;height:2px;width:0%;background:linear-gradient(90deg,var(--cyan),var(--violet));z-index:20;transition:width .05s linear;}
+#hero-pin{position:sticky;top:0;height:100vh;height:100dvh;overflow:hidden;display:flex;align-items:center;justify-content:center;padding-top:76px;padding-bottom:32px;background:var(--bg);}#hero-pin .aurora{position:absolute;inset:0;pointer-events:none;}#hero-pin canvas{position:absolute;inset:0;z-index:1;width:100%;height:100%;}#hero-pin .deco-grid{position:absolute;inset:0;z-index:0;}.hero-vid-wrap video{display:block;}#hero-progress{position:absolute;bottom:0;left:0;height:2px;width:0%;background:linear-gradient(90deg,var(--cyan),var(--violet));z-index:20;transition:width .05s linear;}@media(max-width:767px){#hero{height:auto!important;min-height:100svh;min-height:100vh;}#hero-pin{position:relative!important;height:auto!important;min-height:100svh;min-height:100vh;overflow:visible!important;align-items:flex-start;padding-top:80px;padding-bottom:60px;}#hero-progress{display:none!important;}}
 </style>
 </head>
 <body>
@@ -1344,59 +1345,67 @@ document.getElementById('lead-form').addEventListener('submit', function(e) {
 });
 
 // ─── HERO SCROLL VIDEO ──────────────────────────────────────────────
-(function() {
-  const hero  = document.getElementById('hero');
-  const pin   = document.getElementById('hero-pin');
-  const vid   = document.getElementById('hero-scrub');
-  const bar   = document.getElementById('hero-progress');
-  const PX_PER_SEC = 160;   // px of scroll per second of video
-  const INITIAL_VH = 5;    // fallback height while video loads
-
+(function () {
+  var hero = document.getElementById('hero');
+  var vid  = document.getElementById('hero-scrub');
+  var bar  = document.getElementById('hero-progress');
   if (!hero || !vid) return;
 
-  // Immediate: set a scrollable height so page isn't stuck
-  hero.style.height = (window.innerHeight * INITIAL_VH) + 'px';
+  var PX_PER_SEC = 160;
+  var mob = window.innerWidth < 768;
+
+  /* ── MÓVIL: autoplay simple, sin scroll ── */
+  if (mob) {
+    vid.setAttribute('autoplay',''); vid.setAttribute('loop','');
+    vid.muted = true; vid.playsInline = true;
+    vid.play().catch(function(){});
+    return;
+  }
+
+  /* ── DESKTOP: scroll-driven ── */
+  hero.style.height = (window.innerHeight * 5) + 'px';
 
   vid.load();
-  vid.addEventListener('loadedmetadata', function() {
-    var h = vid.duration * PX_PER_SEC + window.innerHeight;
-    hero.style.height = h + 'px';
+  vid.addEventListener('loadedmetadata', function () {
+    hero.style.height = (vid.duration * PX_PER_SEC + window.innerHeight) + 'px';
     vid.currentTime = 0;
     vid.pause();
   });
 
-  window.addEventListener('resize', function() {
-    if (!vid.duration) return;
-    hero.style.height = (vid.duration * PX_PER_SEC + window.innerHeight) + 'px';
+  window.addEventListener('resize', function () {
+    if (window.innerWidth < 768) return;
+    if (vid.duration) hero.style.height = (vid.duration * PX_PER_SEC + window.innerHeight) + 'px';
   });
 
-  var lastT = -1;
-  function update() {
-    var rect     = hero.getBoundingClientRect();
-    var scrolled = -rect.top;                           // px scrolled into hero
-    if (scrolled < 0 || !vid.duration) return;
-    var maxScroll = hero.offsetHeight - window.innerHeight;
-    if (maxScroll <= 0) return;
-    var progress = Math.min(1, scrolled / maxScroll);
-    var target   = progress * vid.duration;
+  /* Seek logic — one rAF per scroll tick, use fastSeek when available */
+  var targetT  = 0;
+  var pending  = false;
 
-    // Update progress bar
-    bar.style.width = (progress * 100) + '%';
-
-    if (Math.abs(target - lastT) > 0.01) {
-      lastT = target;
-      vid.currentTime = target;
-    }
+  function applySeek() {
+    pending = false;
+    if (!vid.duration) return;
+    var diff = targetT - vid.currentTime;
+    if (Math.abs(diff) < 0.008) return;
+    if (vid.fastSeek) { vid.fastSeek(targetT); } else { vid.currentTime = targetT; }
   }
 
-  window.addEventListener('scroll', update, { passive: true });
+  function onScroll() {
+    var scrolled = -hero.getBoundingClientRect().top;
+    if (scrolled < 0 || !vid.duration) { if (bar) bar.style.width = '0%'; return; }
+    var max = hero.offsetHeight - window.innerHeight;
+    if (max <= 0) return;
+    var p = Math.min(1, scrolled / max);
+    if (bar) bar.style.width = (p * 100) + '%';
+    targetT = p * vid.duration;
+    if (!pending) { pending = true; requestAnimationFrame(applySeek); }
+  }
 
-  // RAF fallback for trackpad/momentum
-  var rafLast = -1;
+  /* Single RAF loop — avoids double-fire from scroll+rAF ── */
+  var prevY = -1;
   (function loop() {
     requestAnimationFrame(loop);
-    var sy = window.scrollY;
-    if (sy !== rafLast) { rafLast = sy; update(); }
+    var y = window.scrollY;
+    if (y !== prevY) { prevY = y; onScroll(); }
   })();
 })();</script>
 </body>
