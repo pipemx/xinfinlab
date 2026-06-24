@@ -53,6 +53,7 @@
   --input-bg: rgba(0,0,0,.04);
   --input-border: rgba(0,0,60,.1);
 }
+[data-theme="light"] .float-lead{background:rgba(255,255,255,.93);border-color:rgba(0,145,234,.22);box-shadow:0 8px 28px rgba(0,0,80,.1);color:#0a0a2e;}[data-theme="light"] .float-lead i{color:var(--cyan);}[data-theme="light"] .float-lead small{color:#4a5a8a;}
 
 *{margin:0;padding:0;box-sizing:border-box;}
 html{scroll-behavior:smooth;}
@@ -126,7 +127,7 @@ nav{position:fixed;top:0;left:0;right:0;z-index:1000;background:var(--nav-bg);ba
 @keyframes fadeUp{from{opacity:0;transform:translateY(30px);}to{opacity:1;transform:translateY(0);}}
 
 /* ─── STATS ─── */
-.stats-wrap{max-width:1100px;margin:-70px auto 0;padding:0 20px;position:relative;z-index:10;}
+.stats-wrap{max-width:1100px;margin:-24px auto 0;padding:0 20px;position:relative;z-index:10;}
 .stats-grid{display:grid;grid-template-columns:repeat(4,1fr);background:var(--card);border:1px solid var(--card-border);backdrop-filter:blur(24px);border-radius:24px;overflow:hidden;}
 .stat-item{text-align:center;padding:28px 20px;border-right:1px solid var(--card-border);position:relative;}
 .stat-item:last-child{border-right:none;}
@@ -513,7 +514,7 @@ footer{background:var(--bg2);border-top:1px solid var(--card-border);padding:60p
 .ln3{bottom:152px;animation-delay:4s;}
 /* --- Premium CRO layer --- */
 #hero .aurora-orb{opacity:.1;}#hero-canvas{opacity:.28;}
-.hero-content{max-width:1240px;text-align:left;padding:76px 24px 100px;display:grid;grid-template-columns:minmax(0,1fr) minmax(360px,520px);gap:56px;align-items:center;}
+.hero-content{max-width:1280px;text-align:left;padding:72px 32px 80px;display:grid;grid-template-columns:1fr minmax(420px,560px);gap:48px;align-items:center;}
 .hero-copy{position:relative;z-index:3;}.hero-title{font-size:clamp(2.8rem,6vw,5.75rem);max-width:760px;}.hero-sub{margin:0 0 34px;max-width:640px;}.hero-ctas{justify-content:flex-start;}
 .hero-proof{display:flex;gap:14px;flex-wrap:wrap;margin-top:26px;color:var(--text2);font-size:13px;font-weight:700}.hero-proof span{display:inline-flex;align-items:center;gap:8px;padding:8px 13px;border:1px solid var(--card-border);border-radius:999px;background:rgba(255,255,255,.04)}.hero-proof i{color:#22c55e}
 .hero-visual{position:relative;min-height:520px;display:flex;align-items:center;justify-content:center;animation:fadeUp .8s .55s ease-out both}
@@ -525,9 +526,9 @@ footer{background:var(--bg2);border-top:1px solid var(--card-border);padding:60p
 .pain-compare{display:grid;grid-template-columns:1fr 1fr;gap:22px;margin-top:48px;text-align:left}.pain-list-card{border-radius:26px;padding:30px;border:1px solid var(--card-border);background:var(--card);backdrop-filter:blur(12px)}.pain-list-card.after{border-color:rgba(34,197,94,.24);background:linear-gradient(135deg,rgba(34,197,94,.08),rgba(0,212,255,.035))}.pain-list-card h3{font-family:'Space Grotesk';font-size:1.35rem;font-weight:800;margin-bottom:18px;display:flex;align-items:center;gap:10px}.pain-list{display:grid;gap:12px;color:var(--text2);font-size:15px}.pain-list div{display:flex;gap:10px;align-items:center;padding:12px 14px;border-radius:14px;background:rgba(255,255,255,.035)}.pain-list i{width:18px;text-align:center}.pain-list-card.before i{color:#ef4444}.pain-list-card.after i{color:#22c55e}
 .bento-product{justify-content:space-between;min-height:300px}.mini-visual{margin:-8px -8px 22px;border-radius:22px;border:1px solid var(--card-border);background:rgba(255,255,255,.045);padding:16px;min-height:128px;overflow:hidden}.mini-window-top{height:18px;display:flex;gap:5px;margin-bottom:12px}.mini-window-top span{width:7px;height:7px;border-radius:50%;background:rgba(255,255,255,.25)}.mini-bars{display:grid;gap:8px}.mini-bars span{height:9px;border-radius:999px;background:rgba(255,255,255,.08)}.mini-bars span:first-child{width:82%;background:linear-gradient(90deg,var(--cyan),var(--violet))}.mini-bars span:nth-child(2){width:64%}.mini-bars span:nth-child(3){width:74%}.mini-chat{display:grid;gap:8px}.mini-chat span{max-width:78%;padding:8px 10px;border-radius:13px;background:rgba(255,255,255,.08);font-size:10px;color:var(--text2)}.mini-chat span:nth-child(even){justify-self:end;background:rgba(37,211,102,.18);color:var(--text)}.mini-feed{display:grid;grid-template-columns:repeat(3,1fr);gap:7px}.mini-feed span{aspect-ratio:1;border-radius:12px;background:linear-gradient(135deg,rgba(139,92,246,.35),rgba(247,37,133,.25))}.mini-map{height:95px;border-radius:18px;background:linear-gradient(135deg,rgba(0,212,255,.12),rgba(255,255,255,.03));position:relative}.mini-map:before{content:'';position:absolute;inset:18px;border:1px dashed rgba(0,212,255,.35);border-radius:16px}.mini-map i{position:absolute;left:50%;top:45%;transform:translate(-50%,-50%);color:#ef4444;font-size:24px}.mini-dashboard{display:flex;align-items:end;gap:8px;height:100px}.mini-dashboard span{flex:1;border-radius:8px 8px 0 0;background:linear-gradient(180deg,var(--cyan),var(--violet));opacity:.75}.mini-dashboard span:nth-child(1){height:36%}.mini-dashboard span:nth-child(2){height:64%}.mini-dashboard span:nth-child(3){height:48%}.mini-dashboard span:nth-child(4){height:86%}.mini-device{display:grid;grid-template-columns:58px 1fr;gap:14px;align-items:center}.mini-phone{height:104px;border-radius:18px;border:1px solid rgba(255,255,255,.16);background:linear-gradient(180deg,rgba(255,255,255,.1),rgba(255,255,255,.03))}
 .plan-chip{display:inline-flex;width:max-content;margin-bottom:16px;padding:7px 12px;border-radius:999px;background:rgba(255,255,255,.06);border:1px solid var(--card-border);font-size:11px;text-transform:uppercase;letter-spacing:1.4px;color:var(--text2);font-weight:800}.plan-visual{height:92px;border-radius:22px;margin:0 0 22px;padding:16px;background:rgba(255,255,255,.045);border:1px solid var(--card-border);display:flex;align-items:end;gap:9px}.plan-visual span{flex:1;border-radius:8px;background:linear-gradient(180deg,var(--cyan),var(--violet));opacity:.75}.plan-visual span:nth-child(1){height:34%}.plan-visual span:nth-child(2){height:58%}.plan-visual span:nth-child(3){height:76%}.plan-visual span:nth-child(4){height:92%}.test-result{display:inline-flex;margin-bottom:16px;padding:7px 11px;border-radius:999px;background:rgba(34,197,94,.1);border:1px solid rgba(34,197,94,.22);color:#22c55e;font-size:12px;font-weight:800}.cta-banner p{max-width:690px;margin:-18px auto 32px;color:var(--text2);font-size:18px;line-height:1.7}
-@media(max-width:980px){.hero-content{grid-template-columns:1fr;text-align:center;padding-top:56px}.hero-sub{margin-left:auto;margin-right:auto}.hero-ctas,.hero-proof{justify-content:center}.hero-visual{min-height:460px}.pain-compare{grid-template-columns:1fr}}@media(max-width:640px){#hero{min-height:auto}.hero-content{padding:42px 18px 82px;gap:28px}.hero-title{letter-spacing:-1px}.hero-visual{min-height:390px}.hero-mockup{width:94%;border-radius:22px}.mock-body{padding:18px}.mock-title{font-size:23px}.lead-1{right:2px;top:14px}.lead-2{left:4px;bottom:88px}.lead-3{right:8px;bottom:8px}.float-lead{font-size:10px;padding:9px 10px}.pricing-grid{grid-template-columns:1fr}.pain-list-card{padding:22px}}@media(prefers-reduced-motion:reduce){.float-lead,.hero-visual{animation:none!important}#hero-canvas,#servicios-canvas{display:none!important}}
+@media(max-width:980px){.hero-content{grid-template-columns:1fr;text-align:center;padding-top:56px}.hero-sub{margin-left:auto;margin-right:auto}.hero-ctas,.hero-proof{justify-content:center}.hero-visual{min-height:auto}.pain-compare{grid-template-columns:1fr}}@media(max-width:640px){.hero-content{padding:42px 18px 82px;gap:28px}.hero-title{letter-spacing:-1px}.hero-visual{min-height:auto}.hero-vid-wrap{max-width:95vw}.hero-mockup{width:94%;border-radius:22px}.mock-body{padding:18px}.mock-title{font-size:23px}.lead-1{right:2px;top:14px}.lead-2{left:4px;bottom:88px}.lead-3{right:8px;bottom:8px}.float-lead{font-size:10px;padding:9px 10px}.pricing-grid{grid-template-columns:1fr}.pain-list-card{padding:22px}}@media(prefers-reduced-motion:reduce){.float-lead,.hero-visual{animation:none!important}#hero-canvas,#servicios-canvas{display:none!important}}
 /* --- Executive premium layer: stable, no layout jump --- */
-#hero{contain:layout paint;}
+
 .hero-title{min-height:clamp(8.4rem,12vw,11.6rem);}
 #hero-rotating{transform:none!important;}
 .hero-mockup{isolation:isolate;}
@@ -668,7 +669,9 @@ section[style*="var(--bg2)"] .aurora-orb{opacity:.22;}
 .hero-vid-wrap{
   aspect-ratio:16/10;
   position:relative;
-  width:min(100%,470px);
+  width:100%;
+  max-width:540px;
+  margin:0 auto;
 }
 .hero-vid-wrap video{
   position:absolute;
@@ -694,6 +697,7 @@ section[style*="var(--bg2)"] .aurora-orb{opacity:.22;}
 @media(max-width:640px){
   .hero-vid-wrap{width:94%;aspect-ratio:16/10;}
 }
+.pricing-original{font-size:.85rem;color:var(--text3);margin-bottom:2px;}.pricing-original del{font-size:1rem;font-weight:700;color:var(--text2);text-decoration:line-through;}.pricing-tag-promo{display:inline-block;font-size:.68rem;font-weight:800;letter-spacing:.07em;text-transform:uppercase;background:linear-gradient(135deg,var(--cyan),var(--violet));color:#fff;border-radius:20px;padding:3px 10px;margin:4px 0 10px;}
 </style>
 </head>
 <body>
@@ -976,7 +980,7 @@ section[style*="var(--bg2)"] .aurora-orb{opacity:.22;}
         <div class="plan-chip" data-es="Para empezar con claridad" data-en="To start with clarity">Para empezar con claridad</div><div class="plan-visual"><span></span><span></span><span></span><span></span></div>
         <div class="pricing-name" data-es="Presencia Digital" data-en="Digital Presence">Presencia Digital</div>
         <div class="pricing-desc" data-es="Entrada accesible a un proceso visual y comercial de nivel premium." data-en="Accessible entry into a premium-level visual and commercial process.">Entrada accesible a un proceso visual y comercial de nivel premium.</div>
-        <div class="pricing-price">$2,999</div><div class="pricing-period" data-es="MXN · pago único" data-en="MXN · one-time payment">MXN · pago único</div>
+        <div class="pricing-original"><del>$6,000</del> MXN precio regular</div><div class="pricing-price">$2,999</div><div class="pricing-period" data-es="MXN · pago único" data-en="MXN · one-time payment">MXN · pago único</div>
         <div class="plan-value" data-es="Incluye criterio de agencia: oferta clara, jerarquía visual, CTA a WhatsApp y revisión responsive. <strong>Se siente como una pieza de 20,000 MXN.</strong>" data-en="Includes agency-level judgment: clear offer, visual hierarchy, WhatsApp CTA and responsive review. <strong>Feels like a 20,000 MXN asset.</strong>">Incluye criterio de agencia: oferta clara, jerarquía visual, CTA a WhatsApp y revisión responsive. <strong>Se siente como una pieza de 20,000 MXN.</strong></div>
         <ul class="feat-list"><li class="check"><i class="fas fa-check"></i> <span data-es="Landing profesional responsive" data-en="Professional responsive landing page">Landing profesional responsive</span></li><li class="check"><i class="fas fa-check"></i> <span data-es="Copy claro para explicar tu oferta" data-en="Clear copy to explain your offer">Copy claro para explicar tu oferta</span></li><li class="check"><i class="fas fa-check"></i> <span data-es="Botón directo a WhatsApp" data-en="Direct WhatsApp button">Botón directo a WhatsApp</span></li><li class="check"><i class="fas fa-check"></i> <span data-es="Formulario de contacto" data-en="Contact form">Formulario de contacto</span></li><li class="check"><i class="fas fa-check"></i> <span data-es="Entrega express disponible" data-en="Express delivery available">Entrega express disponible</span></li></ul>
         <a href="https://wa.me/529992461535?text=Hola%20Xinfin%20Lab%2C%20quiero%20el%20paquete%20Presencia%20Digital" target="_blank" rel="noopener" class="btn-outline" style="justify-content:center;" data-es="Cotizar Presencia Digital" data-en="Quote Digital Presence">Cotizar Presencia Digital</a>
@@ -985,7 +989,7 @@ section[style*="var(--bg2)"] .aurora-orb{opacity:.22;}
         <div class="pricing-popular" data-es="MEJOR PARA CRECER" data-en="BEST FOR GROWTH">MEJOR PARA CRECER</div><div class="plan-chip" data-es="Más elegido" data-en="Most chosen">Más elegido</div><div class="plan-visual"><span></span><span></span><span></span><span></span></div>
         <div class="pricing-name" data-es="Generación de Clientes" data-en="Customer Generation">Generación de Clientes</div>
         <div class="pricing-desc" data-es="Para negocios que quieren verse líderes, captar leads y llegar listos a campañas." data-en="For businesses that want to look like leaders, capture leads and be campaign-ready.">Para negocios que quieren verse líderes, captar leads y llegar listos a campañas.</div>
-        <div class="pricing-price">$5,999</div><div class="pricing-period" data-es="MXN · pago único" data-en="MXN · one-time payment">MXN · pago único</div>
+        <div class="pricing-original"><del>$10,000</del> MXN precio regular</div><div class="pricing-price">$5,999</div><div class="pricing-period" data-es="MXN · pago único" data-en="MXN · one-time payment">MXN · pago único</div>
         <div class="plan-value" data-es="El paquete con mayor percepción de valor: estrategia, copy de conversión, bilingüe, formularios y ruta de contacto multicanal." data-en="The highest perceived-value package: strategy, conversion copy, bilingual content, forms and multichannel contact path.">El paquete con mayor percepción de valor: estrategia, copy de conversión, bilingüe, formularios y ruta de contacto multicanal.</div>
         <ul class="feat-list"><li class="check"><i class="fas fa-check"></i> <span data-es="Todo lo de Presencia Digital" data-en="Everything in Digital Presence">Todo lo de Presencia Digital</span></li><li class="check"><i class="fas fa-check"></i> <span data-es="Estructura completa de conversión" data-en="Complete conversion structure">Estructura completa de conversión</span></li><li class="check"><i class="fas fa-check"></i> <span data-es="Landing bilingüe ES + EN" data-en="Bilingual landing ES + EN">Landing bilingüe ES + EN</span></li><li class="check"><i class="fas fa-check"></i> <span data-es="WhatsApp, Telegram y redes" data-en="WhatsApp, Telegram and social links">WhatsApp, Telegram y redes</span></li><li class="check"><i class="fas fa-check"></i> <span data-es="Formulario calificador de leads" data-en="Lead qualifying form">Formulario calificador de leads</span></li><li class="check"><i class="fas fa-check"></i> <span data-es="Soporte 30 días" data-en="30-day support">Soporte 30 días</span></li><li class="bonus"><i class="fas fa-gift"></i> <span data-es="BONO: Guía de mensajes que venden por WhatsApp" data-en="BONUS: Guide of messages that sell on WhatsApp">BONO: Guía de mensajes que venden por WhatsApp</span></li><li class="bonus"><i class="fas fa-shield-halved"></i> <span data-es="Garantía de satisfacción 7 días" data-en="7-day satisfaction guarantee">Garantía de satisfacción 7 días</span></li></ul>
         <a href="https://wa.me/529992461535?text=Hola%20Xinfin%20Lab%2C%20quiero%20el%20paquete%20Generacion%20de%20Clientes" target="_blank" rel="noopener" class="btn-primary" style="justify-content:center;" data-es="Quiero generar clientes" data-en="I want to generate customers">Quiero generar clientes</a>
@@ -1336,7 +1340,6 @@ document.getElementById('lead-form').addEventListener('submit', function(e) {
   setTimeout(() => toast.classList.remove('show'), 3500);
   window.open(`https://wa.me/529992461535?text=${encodeURIComponent(msg)}`, '_blank');
   this.reset();
-});
-</script>
+});</script>
 </body>
 </html>
