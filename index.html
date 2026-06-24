@@ -120,7 +120,7 @@ nav{position:fixed;top:0;left:0;right:0;z-index:1000;background:var(--nav-bg);ba
 .btn-primary:hover{transform:translateY(-3px);box-shadow:0 12px 40px rgba(0,212,255,.4);}
 .btn-outline{display:inline-flex;align-items:center;gap:10px;padding:16px 36px;border-radius:50px;background:var(--input-bg);color:var(--text);font-weight:600;font-size:15px;text-decoration:none;border:1px solid var(--card-border);backdrop-filter:blur(10px);transition:all .35s;}
 .btn-outline:hover{border-color:var(--cyan);color:var(--cyan);transform:translateY(-3px);}
-.hero-scroll{position:absolute;bottom:32px;left:50%;transform:translateX(-50%);z-index:2;animation:fadeUp .8s 1.1s ease-out both;}
+.hero-scroll{display:none;position:absolute;bottom:32px;left:50%;transform:translateX(-50%);z-index:2;animation:fadeUp .8s 1.1s ease-out both;}
 .scroll-mouse{width:26px;height:42px;border-radius:13px;border:2px solid rgba(255,255,255,.2);display:flex;justify-content:center;padding-top:7px;}
 .scroll-dot{width:4px;height:8px;border-radius:2px;background:var(--cyan);animation:scrollDot 2s infinite;}
 @keyframes scrollDot{0%{opacity:1;transform:translateY(0);}100%{opacity:0;transform:translateY(14px);}}
@@ -220,7 +220,7 @@ section{padding:100px 20px;position:relative;}
 /* ─── PRICING ─── */
 .pricing-grid{display:grid;grid-template-columns:repeat(auto-fit,minmax(340px,1fr));gap:28px;margin-top:56px;}
 .pricing-card{border-radius:28px;padding:40px;display:flex;flex-direction:column;position:relative;overflow:hidden;transition:all .4s cubic-bezier(.16,1,.3,1);}
-.pricing-card.basic{background:var(--card);border:1px solid var(--card-border);backdrop-filter:blur(12px);}
+.pricing-card.basic{background:var(--card);border:1.5px solid rgba(0,212,255,.35);backdrop-filter:blur(12px);box-shadow:0 0 28px rgba(0,212,255,.07);}
 .pricing-card.pro{background:var(--bg2);border:2px solid transparent;background-clip:padding-box;position:relative;}
 .pricing-card.pro::before{content:'';position:absolute;inset:-2px;border-radius:30px;background:var(--gradient);z-index:-1;}
 .pricing-card.pro::after{content:'';position:absolute;inset:0;background:var(--gradient);opacity:.05;border-radius:28px;pointer-events:none;}
@@ -529,7 +529,7 @@ footer{background:var(--bg2);border-top:1px solid var(--card-border);padding:60p
 @media(max-width:980px){.hero-content{grid-template-columns:1fr;text-align:center;padding-top:56px}.hero-sub{margin-left:auto;margin-right:auto}.hero-ctas,.hero-proof{justify-content:center}.hero-visual{min-height:auto}.pain-compare{grid-template-columns:1fr}}@media(max-width:640px){.hero-content{padding:42px 18px 82px;gap:28px}.hero-title{letter-spacing:-1px}.hero-visual{min-height:auto}.hero-vid-wrap{max-width:95vw}.hero-mockup{width:94%;border-radius:22px}.mock-body{padding:18px}.mock-title{font-size:23px}.lead-1{right:2px;top:14px}.lead-2{left:4px;bottom:88px}.lead-3{right:8px;bottom:8px}.float-lead{font-size:10px;padding:9px 10px}.pricing-grid{grid-template-columns:1fr}.pain-list-card{padding:22px}}@media(prefers-reduced-motion:reduce){.float-lead,.hero-visual{animation:none!important}#hero-canvas,#servicios-canvas{display:none!important}}
 /* --- Executive premium layer: stable, no layout jump --- */
 
-.hero-title{min-height:clamp(8.4rem,12vw,11.6rem);}
+.hero-title{min-height:0;}
 #hero-rotating{transform:none!important;}
 .hero-mockup{isolation:isolate;}
 .hero-mockup::before{content:'';position:absolute;inset:0;z-index:1;pointer-events:none;background:linear-gradient(110deg,transparent 0%,rgba(255,255,255,.13) 42%,rgba(0,212,255,.16) 50%,transparent 62%);transform:translateX(-120%);animation:premiumScan 8s cubic-bezier(.16,1,.3,1) infinite;}
@@ -698,6 +698,7 @@ section[style*="var(--bg2)"] .aurora-orb{opacity:.22;}
   .hero-vid-wrap{width:94%;aspect-ratio:16/10;}
 }
 .pricing-original{font-size:.85rem;color:var(--text3);margin-bottom:2px;}.pricing-original del{font-size:1rem;font-weight:700;color:var(--text2);text-decoration:line-through;}.pricing-tag-promo{display:inline-block;font-size:.68rem;font-weight:800;letter-spacing:.07em;text-transform:uppercase;background:linear-gradient(135deg,var(--cyan),var(--violet));color:#fff;border-radius:20px;padding:3px 10px;margin:4px 0 10px;}
+.pricing-card.smm{background:var(--card);border:1.5px solid rgba(124,58,237,.38);backdrop-filter:blur(12px);box-shadow:0 0 28px rgba(124,58,237,.08);}@media(max-width:768px){.float-lead{display:none!important;}.hero-scroll{display:none!important;}.value-strip,.premium-note{display:none;}.hero-ctas{justify-content:center;flex-wrap:wrap;}.hero-proof{justify-content:center;}.hero-copy{text-align:center;}}
 </style>
 </head>
 <body>
@@ -998,7 +999,7 @@ section[style*="var(--bg2)"] .aurora-orb{opacity:.22;}
         <div class="plan-chip" data-es="Para mantenerte activo" data-en="To stay active">Para mantenerte activo</div><div class="plan-visual"><span></span><span></span><span></span><span></span></div>
         <div class="pricing-name"><i class="fas fa-hashtag" style="color:var(--violet);margin-right:8px;"></i><span data-es="Crecimiento Constante" data-en="Constant Growth">Crecimiento Constante</span></div>
         <div class="pricing-desc" data-es="Gestión mensual para que tu marca parezca activa, confiable y lista para vender." data-en="Monthly management so your brand looks active, trustworthy and ready to sell.">Gestión mensual para que tu marca parezca activa, confiable y lista para vender.</div>
-        <div class="pricing-price" style="background:linear-gradient(135deg,var(--violet),var(--pink));-webkit-background-clip:text;-webkit-text-fill-color:transparent;background-clip:text;">$2,499</div><div class="pricing-period" data-es="MXN · mensual" data-en="MXN · monthly">MXN · mensual</div>
+        <div class="pricing-original"><del>$5,000</del> MXN precio regular</div><div class="pricing-price" style="background:linear-gradient(135deg,var(--violet),var(--pink));-webkit-background-clip:text;-webkit-text-fill-color:transparent;background-clip:text;">$2,499</div><div class="pricing-period" data-es="MXN · mensual" data-en="MXN · monthly">MXN · mensual</div><div class="pricing-tag-promo">Oferta mensual</div>
         <div class="plan-value" data-es="No es publicar por publicar: es mantener la prueba social viva para que el cliente confíe antes de escribir." data-en="It is not posting for posting: it keeps social proof alive so customers trust you before messaging.">No es publicar por publicar: es mantener la prueba social viva para que el cliente confíe antes de escribir.</div>
         <ul class="feat-list"><li class="check"><i class="fas fa-check"></i> <span data-es="Gestión de 2 plataformas" data-en="Management of 2 platforms">Gestión de 2 plataformas</span></li><li class="check"><i class="fas fa-check"></i> <span data-es="12 publicaciones mensuales" data-en="12 monthly posts">12 publicaciones mensuales</span></li><li class="check"><i class="fas fa-check"></i> <span data-es="Diseño gráfico personalizado" data-en="Custom graphic design">Diseño gráfico personalizado</span></li><li class="check"><i class="fas fa-check"></i> <span data-es="Stories y reels incluidos" data-en="Stories and reels included">Stories y reels incluidos</span></li><li class="check"><i class="fas fa-check"></i> <span data-es="Reporte mensual de métricas" data-en="Monthly metrics report">Reporte mensual de métricas</span></li></ul>
         <a href="https://wa.me/529992461535?text=Hola%20Xinfin%20Lab%2C%20quiero%20el%20paquete%20Crecimiento%20Constante" target="_blank" rel="noopener" class="btn-primary" style="justify-content:center;background:linear-gradient(135deg,var(--violet),var(--pink));box-shadow:0 0 32px rgba(139,92,246,.25);" data-es="Cotizar crecimiento mensual" data-en="Quote monthly growth">Cotizar crecimiento mensual</a>
